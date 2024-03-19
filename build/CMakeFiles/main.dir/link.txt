@@ -1,1 +1,0 @@
-/usr/bin/c++  -O3 -DNDEBUG   CMakeFiles/main.dir/src/FloatMath.cpp.o CMakeFiles/main.dir/src/InParser.cpp.o CMakeFiles/main.dir/src/SaveUSDA.cpp.o CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/wavefront.cpp.o  -o main  -lpthread /usr/lib/x86_64-linux-gnu/libmpfr.so /usr/lib/x86_64-linux-gnu/libgmp.so 
