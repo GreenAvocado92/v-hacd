@@ -176,7 +176,7 @@ int main(int argc,const char **argv)
 		printf("-g <true/false>         : If set to false, no logging will be displayed.\n");
 	}
 	else
-	{
+	{	
 		bool showLogging=true;
 		Logging logging;
 		VHACD::IVHACD::Parameters p;
@@ -184,6 +184,7 @@ int main(int argc,const char **argv)
 		p.m_logger = &logging;
 		const char *inputFile = argv[1];
 
+		std::string outfile_str = "";
 		ExportFormat format = ExportFormat::NONE;
 
 		WavefrontObj w;
@@ -427,6 +428,12 @@ int main(int argc,const char **argv)
 					}
 				}
 
+				// baseName 前缀增加文件夹
+				auto ind = baseName.find_last_of("/");
+				std::string path_pre = baseName.substr(0, ind+1);
+				std::string path_post = baseName.substr(ind+1, 100);
+				baseName = "./output/" + path_post;
+
 				char outputName[2048];
 				snprintf(outputName,sizeof(outputName),"%s_decompose.stl", baseName.c_str());
 
@@ -481,6 +488,11 @@ int main(int argc,const char **argv)
 							iface->GetConvexHull(i,ch);
 							uint32_t baseIndex = 1;
 							char hullName[2048];
+							// baseName 前缀增加文件夹
+							// auto ind = baseName.find_last_of("/");
+							// std::string path_pre = baseName.substr(0, ind+1);
+							// std::string path_post = baseName.substr(ind+1, 100);
+							// baseName = path_pre + "output/" + path_post;
 							snprintf(hullName,sizeof(hullName),"%s%03d.stl", baseName.c_str(), i);
 							FILE *fph = fopen(hullName,"wb");
 							if ( fph )
