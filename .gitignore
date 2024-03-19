@@ -1,3 +1,6 @@
+build/
+meshes/
+
 # Prerequisites
 *.d
 
